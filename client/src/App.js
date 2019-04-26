@@ -4,14 +4,16 @@ import logo from './logo.svg'
 import './App.css'
 import { useQuery } from 'react-apollo-hooks'
 
-const GET_HELLO_WORLD = gql`
-    query {
-        hello
+const GET_ALL_WIDGETS = gql`
+    query allWidgets {
+        widgets {
+            name
+        }
     }
 `
 
 function App() {
-    const { data, error, loading } = useQuery(GET_HELLO_WORLD)
+    const { data, error, loading } = useQuery(GET_ALL_WIDGETS)
     if (loading) {
         return <div>Loading...</div>
     }
@@ -22,7 +24,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
-                <p>{data.hello}</p>
+                <p>{data.widgets.map(widget => widget.name)}</p>
                 <a
                     className="App-link"
                     href="https://reactjs.org"

@@ -1,28 +1,40 @@
 {
-    "name": "widget-store",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "type": "module",
-    "scripts": {
-        "start": "nodemon --exec babel-node server/index.js"
-    },
-    "dependencies": {
-        "apollo-server-express": "^2.4.8",
-        "express": "^4.16.4",
-        "graphql": "^14.2.1"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.4.3",
-        "@babel/core": "^7.4.3",
-        "@babel/node": "^7.2.2",
-        "@babel/preset-env": "^7.4.3",
-        "eslint": "^5.16.0",
-        "eslint-config-airbnb-base": "^13.1.0",
-        "eslint-config-prettier": "^4.2.0",
-        "eslint-plugin-import": "^2.17.2",
-        "eslint-plugin-prettier": "^3.0.1",
-        "nodemon": "^1.18.11",
-        "prettier": "^1.17.0"
-    }
+  "name": "widget-store",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start:client": "cd client && yarn run start",
+    "start:server": "dotenv -- babel-node index.js --reset",
+    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\"",
+    "start": "yarn start:server",
+    "build": "cd client && yarn install && yarn run build",
+    "heroku-postbuild": "yarn run build",
+    "test": "cd client && yarn test"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "apollo-server-express": "^2.4.8",
+    "concurrently": "^4.1.0",
+    "dotenv": "^7.0.0",
+    "dotenv-cli": "^2.0.0",
+    "express": "^4.16.4",
+    "graphql": "^14.2.1",
+    "material-colors": "^1.2.6",
+    "pg": "^7.10.0",
+    "sequelize": "^5.7.6"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^1.18.11",
+    "prettier": "^1.17.0"
+  }
 }

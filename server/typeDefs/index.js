@@ -1,8 +1,9 @@
 const { query } = require('./query')
-const { widgetType } = require('./types')
+const { mutation } = require('./mutation')
+const { widgetType, orderType } = require('./types')
 
-const typeDefs = [query, widgetType]
+const typeDefs = [query, mutation, widgetType, orderType]
 
 module.exports = {
-    typeDefs,
+  typeDefs
 }

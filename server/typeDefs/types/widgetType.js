@@ -1,31 +1,29 @@
-const { gql } = require('apollo-server-express')
+import { gql } from 'apollo-server-express'
 
 const widgetType = gql`
-    enum Color {
-        GREEN
-        RED
-        BLUE
-    }
+  enum Size {
+    XS
+    SM
+    MD
+    LG
+    XL
+  }
 
-    enum Size {
-        SMALL
-        MEDIUM
-        LARGE
-    }
+  type WidgetVariant {
+    id: ID!
+    widget: Widget!
+    color: String!
+    size: Size!
+    price: Float!
+  }
 
-    type WidgetVariant {
-        color: Color!
-        size: Size!
-        numAvailable: Int!
-        price: Float!
-    }
-
-    type Widget {
-        name: String!
-        variants: [WidgetVariant!]!
-    }
+  type Widget {
+    id: ID!
+    name: String!
+    variants: [WidgetVariant!]!
+  }
 `
 
 module.exports = {
-    widgetType,
+  widgetType
 }
